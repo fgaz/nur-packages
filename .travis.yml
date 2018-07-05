@@ -5,7 +5,12 @@ sudo: false
 install:
  - nix --version
  - travis_retry nix-channel --update
+ - nix-env -if https://github.com/cachix/cachix/tarball/master --substituters https://cachix.cachix.org --trusted-public-keys cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM=
 
 script:
- - nix-build non-broken.nix
+ - export outs=$(nix-build non-broken.nix)
+ - echo Produced $outs
+
+after_success:
+  - cachix push fgaz $outs
 
