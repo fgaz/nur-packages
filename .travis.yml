@@ -1,0 +1,11 @@
+language: nix
+
+sudo: false
+
+install:
+ - nix --version
+ - travis_retry nix-channel --update
+
+script:
+ - nix-build non-broken.nix
+
