@@ -17,6 +17,7 @@
 
   ### APPLICATIONS
   variety = callPackage ./pkgs/variety { };
+  gnubiff = callPackage ./pkgs/gnubiff { };
 
   ### GAMES
   _20kly = callPackage ./pkgs/20kly { };
