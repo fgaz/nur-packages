@@ -1,28 +1,30 @@
 # This file describes your repository contents.
-# It should return a set of nix derivations.
-# It should NOT import <nixpkgs>. Instead, you should take all dependencies as
-# arguments.
+# It should return a set of nix derivations
+# and optionally the special attributes `lib`, `modules` and `overlays`.
+# It should NOT import <nixpkgs>. Instead, you should take pkgs as an argument.
+# Having pkgs default to <nixpkgs> is fine though, and it lets you use short
+# commands such as:
+#     nix-build -A mypackage
 
-{ callPackage
-, libsForQt5
-, haskellPackages
-, pythonPackages
-# , ...
-# Add here other callPackage/callApplication/... providers as the need arises
-, ... }:
+{ pkgs ? import <nixpkgs> {} }:
 
 {
+  # The `lib`, `modules`, and `overlay` names are special
+  lib = import ./lib { inherit pkgs; }; # functions
+  modules = import ./modules; # NixOS modules
+  overlays = import ./overlays; # nixpkgs overlays
+
   ### DEVELOPMENT
-  lmdbxx = callPackage ./pkgs/lmdbxx { };
+  lmdbxx = pkgs.callPackage ./pkgs/lmdbxx { };
 
   ### APPLICATIONS
-  variety = callPackage ./pkgs/variety { };
-  gnubiff = callPackage ./pkgs/gnubiff { };
+  variety = pkgs.callPackage ./pkgs/variety { };
+  gnubiff = pkgs.callPackage ./pkgs/gnubiff { };
 
   ### GAMES
-  _20kly = callPackage ./pkgs/20kly { };
-  endgame-singularity = callPackage ./pkgs/endgame-singularity { };
-  openhexagon = callPackage ./pkgs/openhexagon { };
-  powermanga = libsForQt5.callPackage ./pkgs/powermanga { };
+  _20kly = pkgs.callPackage ./pkgs/20kly { };
+  endgame-singularity = pkgs.callPackage ./pkgs/endgame-singularity { };
+  openhexagon = pkgs.callPackage ./pkgs/openhexagon { };
+  powermanga = pkgs.libsForQt5.callPackage ./pkgs/powermanga { };
 }
 
