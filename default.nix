@@ -20,6 +20,7 @@
   ### APPLICATIONS
   variety = pkgs.callPackage ./pkgs/variety { };
   gnubiff = pkgs.callPackage ./pkgs/gnubiff { };
+  maya-calendar = pkgs.callPackage ./pkgs/maya-calendar { };
 
   ### GAMES
   _20kly = pkgs.callPackage ./pkgs/20kly { };
