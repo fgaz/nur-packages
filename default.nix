@@ -21,6 +21,8 @@
   variety = pkgs.callPackage ./pkgs/variety { };
   gnubiff = pkgs.callPackage ./pkgs/gnubiff { };
   maya-calendar = pkgs.callPackage ./pkgs/maya-calendar { };
+  sfxr = pkgs.callPackage ./pkgs/sfxr { };
+  sfxr-qt = pkgs.libsForQt5.callPackage ./pkgs/sfxr-qt { };
 
   ### GAMES
   _20kly = pkgs.callPackage ./pkgs/20kly { };
