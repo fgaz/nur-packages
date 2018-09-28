@@ -19,5 +19,6 @@ stdenv.mkDerivation rec {
     (python3.withPackages (pp: with pp; [ pyyaml jinja2 ]))
   ];
   configurePhase = "cmake . -DCMAKE_INSTALL_PREFIX=$out";
+  meta.broken = true;
 }
 
