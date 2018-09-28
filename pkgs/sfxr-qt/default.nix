@@ -9,7 +9,7 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "agateau";
     repo = "sfxr-qt";
-    rev = "${version}";
+    rev = "b1da2f0a7dbcefa3b52310b1a4b4cb2b638d841b";
     sha256 = "1bcz63qaklysijls3lq9xqv6887x3d06bqclnpqdbjyl729pwvgg";
     fetchSubmodules = true;
   };
