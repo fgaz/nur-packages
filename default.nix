@@ -8,7 +8,7 @@
 
 { pkgs ? import <nixpkgs> {} }:
 
-{
+rec {
   # The `lib`, `modules`, and `overlay` names are special
   lib = import ./lib { inherit pkgs; }; # functions
   modules = import ./modules; # NixOS modules
@@ -16,6 +16,7 @@
 
   ### DEVELOPMENT
   lmdbxx = pkgs.callPackage ./pkgs/lmdbxx { };
+  termbox = pkgs.callPackage ./pkgs/termbox { };
 
   ### SERVERS
   pleroma = pkgs.callPackage ./pkgs/pleroma { };
