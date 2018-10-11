@@ -36,6 +36,7 @@ rec {
     };
   });
   ly = pkgs.callPackage ./pkgs/ly { termbox = termbox; };
+  slicer = pkgs.libsForQt5.callPackage ./pkgs/slicer { };
 
   ### GAMES
   _20kly = pkgs.callPackage ./pkgs/20kly { };
