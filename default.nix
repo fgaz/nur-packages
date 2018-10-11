@@ -34,6 +34,7 @@
       sha256 = "0l68v75bfl7nzlc43bh6nyx3akdaj6ac0qnd0r0lagppspm4i6hh";
     };
   });
+  ly = pkgs.callPackage ./pkgs/ly { termbox = termbox; };
 
   ### GAMES
   _20kly = pkgs.callPackage ./pkgs/20kly { };
