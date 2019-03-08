@@ -6,29 +6,32 @@
 , clutter
 , evolution-data-server # for libecal
 #, libedataserveru
+, geoclue2
 , gnome3
 , granite
 , libical
-, libnotify }:
+, libnotify
+, python3 }:
 
 stdenv.mkDerivation rec {
   name = "${pname}-${version}";
   pname = "maya-calendar";
-  version = "unstable";
+  version = "5.0";
   src = fetchFromGitHub {
     owner = "elementary";
     repo = "calendar";
-    rev = "dcd02192154f7cc98d28a28f480e56b05372075d";
-    sha256 = "14jj3hwx1yya7hbpg00rwhglxqqand0i9dv016wkqs66c2r8jhqk";
+    rev = version;
+    sha256 = "0yiis5ig98gjw4s2qh8lppkdmv1cgi6qchxqncsjdki7yxyyni35";
   };
 
-  nativeBuildInputs = [ meson ninja vala_0_40 pkgconfig wrapGAppsHook ];
+  nativeBuildInputs = [ meson ninja vala_0_40 pkgconfig wrapGAppsHook python3 ];
   buildInputs = [ gtk3
  libchamplain
 # libchamplain-gtk
  clutter
  evolution-data-server
 # libedataserveru
+ geoclue2
  gnome3.folks
  gnome3.libgee
  gnome3.geocode-glib
