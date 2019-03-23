@@ -8,7 +8,7 @@
 #, libedataserveru
 , geoclue2
 , gnome3
-, granite
+, pantheon
 , libical
 , libnotify
 , python3 }:
@@ -37,7 +37,7 @@ stdenv.mkDerivation rec {
  gnome3.geocode-glib
  gnome3.glib
  gnome3.gsettings-desktop-schemas
- granite
+ pantheon.granite
  libical
  libnotify ];
   configurePhase = "meson build --prefix=$out";
