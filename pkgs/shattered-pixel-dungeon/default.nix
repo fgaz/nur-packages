@@ -26,7 +26,7 @@ stdenv.mkDerivation rec {
       --add-flags "-jar $out/share/shattered-pixel-dungeon.jar"
   '';
 
-  meta = with stdenv.lib {
+  meta = with stdenv.lib; {
     homepage = "https://shatteredpixel.com/";
     downloadPage = "https://github.com/00-Evan/shattered-pixel-dungeon-gdx/releases";
     description = "Traditional roguelike game with pixel-art graphics and simple interface";
