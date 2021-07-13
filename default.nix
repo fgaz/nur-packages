@@ -15,7 +15,6 @@ rec {
   overlays = import ./overlays; # nixpkgs overlays
 
   ### DEVELOPMENT
-  lobster = pkgs.callPackage ./pkgs/lobster { };
 
   ### APPLICATIONS
   variety = pkgs.callPackage ./pkgs/variety { };
