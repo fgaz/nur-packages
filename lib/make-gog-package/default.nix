@@ -33,7 +33,7 @@ stdenv.mkDerivation {
     mkdir -p $out/share
     cp -r * $out/share/
     makeWrapper \
-      ${steam-run}/bin/steam-run \
+      ${steam-run-native}/bin/steam-run \
       $out/bin/${binname} \
       --add-flags $out/share/data/noarch/start.sh
   '';
