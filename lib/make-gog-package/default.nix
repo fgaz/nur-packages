@@ -1,12 +1,33 @@
-{ binname, installername, pname, version, sha256, meta ? {} }:
-{ stdenv, requireFile, zip, unzip, makeWrapper, steam-run }:
+# Make a package from a gog installer, wrapping it with steam-run-native
+
+# what you want the binary in $out/bin to be called
+{ binname
+# the name of the gog installer, eg. "enter_the_gungeon" if the installer is
+# called enter_the_gungeon_2_1_9_33951.sh
+, installername
+, pname
+# version of the game, in the above example "2_1_9_33951"
+, version
+# hash of the installer
+, sha256
+# optional meta attribute set
+, meta ? {}
+}:
+
+{ stdenv
+, requireFile
+, zip
+, unzip
+, makeWrapper
+, steam-run
+}:
 
 stdenv.mkDerivation {
-  name = "${pname}-${version}";
+  inherit pname version meta;
 
   src = requireFile {
     name = "${installername}_${version}.sh";
-    sha256 = sha256;
+    inherit sha256;
     message = ''
       Please purchase the game on gog.com and download the Linux installer.
 
@@ -17,8 +38,14 @@ stdenv.mkDerivation {
     '';
   };
 
-  nativeBuildInputs = [ zip unzip makeWrapper ];
-  buildInputs = [ steam-run ];
+  nativeBuildInputs = [
+    zip
+    unzip
+    makeWrapper
+  ];
+  buildInputs = [
+    steam-run
+  ];
 
   unpackPhase = ''
     zip -F $src --out fixed.zip
@@ -37,8 +64,4 @@ stdenv.mkDerivation {
       $out/bin/${binname} \
       --add-flags $out/share/data/noarch/start.sh
   '';
-
-  meta = meta;
-
 }
-
