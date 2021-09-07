@@ -19,7 +19,7 @@
 , zip
 , unzip
 , makeWrapper
-, steam-run
+, steam-run-native
 }:
 
 stdenv.mkDerivation {
@@ -42,9 +42,6 @@ stdenv.mkDerivation {
     zip
     unzip
     makeWrapper
-  ];
-  buildInputs = [
-    steam-run
   ];
 
   unpackPhase = ''
